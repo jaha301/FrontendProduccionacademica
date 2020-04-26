@@ -13,23 +13,40 @@
 
 			<mat-card>
 					<mat-card-content>
-            <form>
+            <form [formGroup]="crearForm">
              <div class="form-group">
-               <label>Nombre de la Producción</label>
-               <input type="text" class="form-control" id="nombreProduccion" name ="nombreProduccion">
+               <label>Nombre de la Producción: </label>
+               <input type="text" class="form-control" formControlName="nombreProduccion" placeholder="Nombre de la producción">
              </div>
-              <div class="form-group">
-                <label>Tipo</label>
-                <input type="text" class="form-control" id="tipoProduccion" name ="tipoProduccion">
+              <div class="alert-danger" *ngIf="nombreProduccion.invalid && nombreProduccion.touched">
+                <div class="container-error-message" *ngIf="nombreProduccion.errors.required">
+                  El Nombre es requerido.
+                </div>
               </div>
               <div class="form-group">
-                <label>Descripción</label>
-                <input type="textarea" class="form-control" id="descripcionProduccion" name ="descripcionProduccion">
+                <label>Tipo: </label>
+                <input type="text" class="form-control" formControlName="tipo" placeholder="investigacion, publicación...">
+              </div>
+              <div class="alert-danger" *ngIf="tipo.invalid && tipo.touched">
+                <div class="container-error-message" *ngIf="tipo.errors.required">
+                  El tipo es requerido.
+                </div>
               </div>
 
-
-              <br><div> <button mat-raised-button color="accent" >Crear</button></div>
-            </form>
+              <div class="form-group">
+                <label>Descripción: </label>
+                <textarea class="form-control" formControlName="descripcion"></textarea>
+                </div>
+              <div class="alert-danger" *ngIf="descripcion.invalid && descripcion.touched">
+                <div class="container-error-message" *ngIf="descripcion.errors.required">
+                  La descripción es requerida.
+                </div>
+                <div class="container-error-message" *ngIf="descripcion.errors.minlength">
+                  La descripción es demasiado corta.
+                </div>
+              </div>
+              <br><div> <button mat-raised-button color="accent" (click)="onSavedForm()" [disabled]="!crearForm.valid">Crear</button></div>
+              </form>
 
 
 					</mat-card-content>

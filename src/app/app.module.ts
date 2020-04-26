@@ -7,6 +7,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AppRoutes } from './app.routing';
 import { AppComponent } from './app.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FullComponent } from './layouts/full/full.component';
@@ -17,6 +18,10 @@ import { DemoMaterialModule } from './demo-material-module';
 
 import { SharedModule } from './shared/shared.module';
 import { SpinnerComponent } from './shared/spinner.component';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFirestoreModule} from "@angular/fire/firestore";
+import {environment} from "../environments/environment";
+import {DataDbService} from "./service/data-db.service";
 
 @NgModule({
   declarations: [
@@ -34,13 +39,17 @@ import { SpinnerComponent } from './shared/spinner.component';
     FlexLayoutModule,
     HttpClientModule,
     SharedModule,
-    RouterModule.forRoot(AppRoutes)
+    RouterModule.forRoot(AppRoutes),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
       provide: LocationStrategy,
       useClass: PathLocationStrategy
-    }
+    },
+    [DataDbService]
   ],
   bootstrap: [AppComponent]
 })
