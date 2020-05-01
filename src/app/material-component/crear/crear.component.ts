@@ -35,6 +35,7 @@ export class CrearComponent implements OnInit{
       descripcion: 'Ole ole lo caracole'} */
     if(this.crearForm.valid) {
       this.dbData.saveMessage(this.crearForm.value);
+      this.crearForm.reset();
       console.log('Guardado');
       }
     else {
