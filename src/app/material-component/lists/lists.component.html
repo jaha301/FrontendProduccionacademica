@@ -1,5 +1,5 @@
 
-		<div fxFlex.gt-sm="80%" >
+		<div fxFlex.gt-sm="100%" >
       <mat-card>
         <mat-card-content>
           <mat-card-title>Producciónes Académicas Registradas</mat-card-title>
@@ -8,17 +8,18 @@
 				<mat-card>
 						<mat-card-content>
 
-
-							<mat-card-subtitle>Lista de Producciones</mat-card-subtitle>
-							<mat-list *ngIf="produccion$ | async as produccion; else loading">
+									<mat-list *ngIf="produccion$ | async as produccion; else loading">
 
                   <mat-list-item *ngFor="let produccion of produccion$ | async">
+                    <hr style="color: #0056b2;" size="10" />
+                    <img mat-list-avatar src="assets/images/libro.jpg">
                     <a matLine [routerLink]="['produccion.nombreProduccion']">
                       {{produccion.nombreProduccion}}
                     </a>
-                    <h3 matLine>{{produccion.tipo}}</h3>
-                    <p matLine class="text-muted">{{produccion.descripcion}}</p>
-                  </mat-list-item>
+                    <h3 matLine style="color: #fc4b6c;">{{produccion.tipo}}</h3>
+                    <p matLine >{{produccion.descripcion}}</p>
+                    <h3 matLine  style="color: #00897b;">_____________________________________________________________________________</h3>
+                    </mat-list-item>
 							</mat-list>
 						</mat-card-content>
 				</mat-card>
