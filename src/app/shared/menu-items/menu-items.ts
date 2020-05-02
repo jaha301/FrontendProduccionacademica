@@ -8,8 +8,9 @@ export interface Menu {
 }
 
 const MENUITEMS = [
-  { state: 'menu', type: 'link', name: 'Consultar', icon: 'view_list' },
-  { state: 'crear', type: 'link', name: 'Crear', icon: 'view_list' },
+ // { state: 'menu', type: 'link', name: 'Consultar', icon: 'view_list' },
+  { state: 'crear', type: 'link', name: 'Crear Publicación', icon: 'view_list' },
+  { state: 'lists', type: 'link', name: 'Lista de Producciones', icon: 'view_list' },
   { state: 'stepper', type: 'link', name: 'Modificar', icon: 'view_list' },
   { state: 'dashboard', name: 'Mis Estadísticas', type: 'link', icon: 'av_timer' },
 

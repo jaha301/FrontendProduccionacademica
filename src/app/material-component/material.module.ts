@@ -17,6 +17,12 @@ import { ListsComponent } from './lists/lists.component';
 import { MenuComponent } from './menu/menu.component';
 import { StepperComponent } from './stepper/stepper.component';
 import { CrearComponent } from './crear/crear.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+
+const myModule = [
+  MatProgressSpinnerModule
+];
+
 @NgModule({
   imports: [
     CommonModule,
@@ -26,7 +32,8 @@ import { CrearComponent } from './crear/crear.component';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    CdkTableModule
+    CdkTableModule,
+    myModule
   ],
   providers: [],
   declarations: [
@@ -35,7 +42,7 @@ import { CrearComponent } from './crear/crear.component';
     MenuComponent,
     CrearComponent,
     StepperComponent,
- 
+
   ]
 })
 export class MaterialComponentsModule {}
