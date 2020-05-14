@@ -19,6 +19,7 @@ import { StepperComponent } from './stepper/stepper.component';
 import { CrearComponent } from './crear/crear.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 const myModule = [
   MatProgressSpinnerModule
@@ -35,7 +36,8 @@ const myModule = [
         FlexLayoutModule,
         CdkTableModule,
         myModule,
-        MatProgressBarModule
+        MatProgressBarModule,
+        MatExpansionModule
     ],
   providers: [],
   declarations: [

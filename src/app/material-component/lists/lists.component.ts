@@ -9,9 +9,22 @@ import {AngularFirestore} from "@angular/fire/firestore";
   selector: 'app-lists',
   templateUrl: './lists.component.html',
   styleUrls: ['./lists.component.scss']
+
 })
 
 export class ListsComponent implements OnInit{
+  panelOpenState = false;
+  step = 0;
+  setStep(index: number) {
+    this.step = index;
+  }
+  nextStep() {
+    this.step++;
+  }
+  prevStep() {
+    this.step--;
+  }
+
   public produccion: {
     nombreProduccion: String;
     tipo: String;
@@ -30,5 +43,7 @@ export class ListsComponent implements OnInit{
     this.produccion$ = this.dbData.getAllProduccion();
 
   }
+
+
 
 }

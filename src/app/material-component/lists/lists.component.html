@@ -1,29 +1,36 @@
 
-		<div fxFlex.gt-sm="100%" >
-      <mat-card>
-        <mat-card-content>
-          <mat-card-title>Producciónes Académicas Registradas</mat-card-title>
-        </mat-card-content>
-      </mat-card>
-				<mat-card>
-						<mat-card-content>
+<!-- ============================================================== -->
+<!-- As an Accordion -->
+<!-- ============================================================== -->
+<mat-card-title>Producciónes Académicas Registradas </mat-card-title>
+<mat-card >
 
-									<mat-list *ngIf="produccion$ | async as produccion; else loading">
+        <mat-card-header class="example-headers-align" >
+          <mat-panel-title><h3>Nombre</h3></mat-panel-title>
+          <mat-panel-title><h3>Tipo</h3></mat-panel-title>
+          <mat-panel-title></mat-panel-title>
+        </mat-card-header>
+</mat-card>
+<mat-card>
+  <mat-card-content *ngIf="produccion$ | async as produccion; else loading">
+    <mat-accordion class="example-headers-align" *ngFor="let produccion of produccion$ | async">
+      <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(1)" hideToggle="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title> {{produccion.nombreProduccion}}</mat-panel-title>
+          <mat-panel-description> {{produccion.tipo}}
+            <img width="30" height="30" mat-list-avatar src="assets/images/libro.jpg">
 
-                  <mat-list-item *ngFor="let produccion of produccion$ | async">
-                    <hr style="color: #0056b2;" size="10" />
-                    <img mat-list-avatar src="assets/images/libro.jpg">
-                    <a href={{produccion.archivo}} target="_blank" matLine >
-                      {{produccion.nombreProduccion}}
-                    </a>
-                    <h3 matLine style="color: #fc4b6c;">{{produccion.tipo}}</h3>
-                    <p matLine >{{produccion.descripcion}}</p>
-                    <h3 matLine  style="color: #00897b;">_____________________________________________________________________________</h3>
-                    </mat-list-item>
-							</mat-list>
-						</mat-card-content>
-				</mat-card>
-		</div>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-panel-description> Descripción. <br> {{produccion.descripcion}}
+          <a href={{produccion.archivo}} target="_blank" matLine ><mat-icon>cloud_download</mat-icon></a>
+        </mat-panel-description>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
+</mat-card>
+
+
 
     <ng-template #loading>
       <div class="container-spinner">
