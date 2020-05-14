@@ -18,23 +18,25 @@ import { MenuComponent } from './menu/menu.component';
 import { StepperComponent } from './stepper/stepper.component';
 import { CrearComponent } from './crear/crear.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 const myModule = [
   MatProgressSpinnerModule
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(MaterialRoutes),
-    DemoMaterialModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    FlexLayoutModule,
-    CdkTableModule,
-    myModule
-  ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(MaterialRoutes),
+        DemoMaterialModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        FlexLayoutModule,
+        CdkTableModule,
+        myModule,
+        MatProgressBarModule
+    ],
   providers: [],
   declarations: [
     GridComponent,

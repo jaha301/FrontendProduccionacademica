@@ -13,7 +13,7 @@
                   <mat-list-item *ngFor="let produccion of produccion$ | async">
                     <hr style="color: #0056b2;" size="10" />
                     <img mat-list-avatar src="assets/images/libro.jpg">
-                    <a matLine [routerLink]="['produccion.nombreProduccion']">
+                    <a href={{produccion.archivo}} target="_blank" matLine >
                       {{produccion.nombreProduccion}}
                     </a>
                     <h3 matLine style="color: #fc4b6c;">{{produccion.tipo}}</h3>
@@ -27,7 +27,7 @@
 
     <ng-template #loading>
       <div class="container-spinner">
-        <mat-spinner></mat-spinner>
+        <mat-spinner diameter='20' strokeWidth='50'></mat-spinner>
       </div>
     </ng-template>
 

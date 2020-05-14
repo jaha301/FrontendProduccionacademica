@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/firestore";
 import {Observable} from "rxjs";
-import {map} from 'rxjs/operators';
+import {finalize, map} from 'rxjs/operators';
 import {MessageI} from "../Models/message.interface";
+import {FileI} from "../Models/file.interface";
+import {AngularFireStorage} from "@angular/fire/storage";
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +12,28 @@ import {MessageI} from "../Models/message.interface";
 
 export class DataDbService {
   private contactCollection: AngularFirestoreCollection<MessageI>;
+  private filePath: any;
+  private downloadURL: Observable<string>
+  uploadPercent: Observable<number>
 
-  constructor(private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore, private storage: AngularFireStorage) {
     this.contactCollection = afs.collection<MessageI>('produccion');
   }
-  saveMessage(newContact: MessageI):void{
-    this.contactCollection.add(newContact);
+  saveMessage(produccion: MessageI):void{
+
+    const productObj = {
+      nombreProduccion: produccion.nombreProduccion,
+      tipo: produccion.tipo,
+      descripcion: produccion.descripcion,
+      archivo: this.downloadURL,
+      fileRef: this.filePath
+    };
+    //Editar Produccion tambien
+    this.contactCollection.add(productObj);
+
   }
+
+
   public getAllProduccion():Observable<MessageI[]>{
     return this.afs
       .collection('produccion')
@@ -30,4 +47,25 @@ export class DataDbService {
     })
           ));
   }
-}
+  public preAddProduccion(produccion:MessageI, file: FileI):void{
+    this.uploadFile(produccion, file);
+  }
+
+  private uploadFile(produccion: MessageI, file: FileI ) {
+
+    this.filePath = `archivos/${file.name}`;
+    const fileRef = this.storage.ref(this.filePath);
+    const task = this.storage.upload(this.filePath, file);
+    this.uploadPercent = task.percentageChanges();
+    task.snapshotChanges()
+      .pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe(urlArchivo => {
+            this.downloadURL = urlArchivo;
+            this.saveMessage(produccion);
+
+          })
+        })
+      ).subscribe();
+  }
+  }
