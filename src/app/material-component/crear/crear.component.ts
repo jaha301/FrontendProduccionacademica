@@ -3,8 +3,9 @@ import {DataDbService} from "../../service/data-db.service";
 import {MessageI} from "../../Models/message.interface";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AngularFireStorage} from "@angular/fire/storage";
-import {finalize} from "rxjs/operators";
+import {delay, finalize} from "rxjs/operators";
 import {Observable} from "rxjs";
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-crear',
@@ -13,6 +14,7 @@ import {Observable} from "rxjs";
 })
 export class CrearComponent implements OnInit{
   private archi:any;
+
 
 
   num: number = 0;
@@ -25,7 +27,7 @@ export class CrearComponent implements OnInit{
     });
       }
       crearForm: FormGroup;
-  constructor(private dbData: DataDbService, private storageProduccion: AngularFireStorage) {
+  constructor(private dbData: DataDbService, private storageProduccion: AngularFireStorage,  private locacion: Location) {
      this.crearForm = this.createFormGroup();
   }
   @ViewChild('fileArchivo') inputUrlFile: ElementRef;
@@ -44,12 +46,14 @@ export class CrearComponent implements OnInit{
     if(this.crearForm.valid) {
       this.dbData.preAddProduccion(this.crearForm.value, this.archi);
       this.crearForm.reset();
-      console.log('Guardado');
-      }
+      //this.locacion.back();
+         }
     else {
-      console.log('Datos no validos');
+
     }
+
   }
+
   handleArchivo(event:any):void{
     this.archi = event.target.files[0];
 

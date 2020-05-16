@@ -6,10 +6,12 @@
 <mat-card >
 
         <mat-card-header class="example-headers-align" >
-          <mat-panel-title><h3>Nombre</h3></mat-panel-title>
-          <mat-panel-title><h3>Tipo</h3></mat-panel-title>
+          <mat-panel-title><h3 style="color: #4e0561" >Nombre</h3></mat-panel-title>
+          <mat-panel-title><h3 style="color: #4e0561" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tipo</h3></mat-panel-title>
           <mat-panel-title></mat-panel-title>
+          <div align= "right"> <a href= 'crear'><button mat-raised-button color="accent" >Nueva Producción</button></a></div>
         </mat-card-header>
+
 </mat-card>
 <mat-card>
   <mat-card-content *ngIf="produccion$ | async as produccion; else loading">
@@ -18,13 +20,16 @@
         <mat-expansion-panel-header>
           <mat-panel-title> {{produccion.nombreProduccion}}</mat-panel-title>
           <mat-panel-description> {{produccion.tipo}}
+
             <img width="30" height="30" mat-list-avatar src="assets/images/libro.jpg">
 
           </mat-panel-description>
+          <div align= "right"><a  href={{produccion.archivo}} target="_blank" matLine ><mat-icon>cloud_download</mat-icon></a>
+            <a href= 'crear'><mat-icon>edit</mat-icon></a></div>
         </mat-expansion-panel-header>
         <mat-panel-description> Descripción. <br> {{produccion.descripcion}}
-          <a href={{produccion.archivo}} target="_blank" matLine ><mat-icon>cloud_download</mat-icon></a>
         </mat-panel-description>
+
       </mat-expansion-panel>
     </mat-accordion>
   </mat-card-content>

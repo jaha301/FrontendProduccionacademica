@@ -50,7 +50,9 @@ export class DataDbService {
   public preAddProduccion(produccion:MessageI, file: FileI):void{
     this.uploadFile(produccion, file);
   }
-
+  deleteBook(idProduccion: string): void {
+    //this.contactCollection = this.afs.collection<MessageI>(` `)
+  }
   private uploadFile(produccion: MessageI, file: FileI ) {
 
     this.filePath = `archivos/${file.name}`;
