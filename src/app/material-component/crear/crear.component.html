@@ -15,6 +15,9 @@
                 <div class="container-error-message" *ngIf="nombreProduccion.errors.required">
                   El Nombre es requerido.
                 </div>
+                <div class="container-error-message" *ngIf="nombreProduccion.errors.maxlength">
+                  La nombre es demasiado largo. maximo 60 caracteres.
+                </div>
               </div>
               <div class="form-group">
                 <label>Tipo: </label>
@@ -49,7 +52,7 @@
               <div class="container-input-file">
                 <label class="custom-file">
                   <input type="file" formControlName="archivo" (change)="handleArchivo ($event)"/>
-                  <mat-icon>cloud_upload</mat-icon><span>  Elegir Archivo</span>
+                  <mat-icon>cloud_upload</mat-icon><span>&nbsp;  Elegir Archivo</span>
                 </label>
               <div>
                 <mat-progress-bar mode="determinate" [value]="num"></mat-progress-bar>

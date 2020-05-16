@@ -10,7 +10,7 @@
 
 
 <mat-card fxFlex="100" fxLayoutAlign="center center" >
-<div class="row" fxFlex="70">
+<div class="row" fxFlex="80">
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
@@ -21,7 +21,7 @@
           <table class="table">
             <thead class=" text-primary">
             <th >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nombre  </th>
-            <th > &nbsp; Tipo    </th>
+            <th class="text-right">Tipo    </th>
             <th class="text-right">
               <div align= "right"> <a href= 'crear'><button mat-raised-button color="accent" >Nueva Producción</button></a></div>
             </th>
@@ -33,12 +33,10 @@
           <mat-accordion class="example-headers-align" *ngFor="let produccion of produccion$ | async">
             <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(2)" hideToggle="true">
               <mat-expansion-panel-header>
+
                 <mat-panel-title> {{produccion.nombreProduccion}}</mat-panel-title>
-                <mat-panel-description> {{produccion.tipo}}
-
+                <mat-panel-description>  {{produccion.tipo}}</mat-panel-description>
                   <!img width="30" height="30" mat-list-avatar src="assets/images/libro.jpg">
-
-                </mat-panel-description>
                 <div align= "right"><a  href={{produccion.archivo}} target="_blank" matLine ><mat-icon>cloud_download</mat-icon></a>
                   <a href= 'crear'><mat-icon>edit</mat-icon></a><a href= 'crear'><mat-icon>delete</mat-icon></a></div>
               </mat-expansion-panel-header>
@@ -58,7 +56,7 @@
 
     <ng-template #loading>
       <div class="container-spinner">
-        <mat-spinner diameter='40' strokeWidth='60'></mat-spinner>
+        <mat-spinner diameter='30' strokeWidth='60'></mat-spinner>
       </div>
     </ng-template>
 </mat-card>

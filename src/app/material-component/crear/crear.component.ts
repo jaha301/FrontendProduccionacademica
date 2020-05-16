@@ -20,7 +20,7 @@ export class CrearComponent implements OnInit{
   num: number = 0;
   createFormGroup(){
     return new FormGroup({
-      nombreProduccion: new FormControl('',[Validators.required]),
+      nombreProduccion: new FormControl('',[Validators.required, Validators.maxLength(60)]),
       tipo: new FormControl ('', [Validators.required]),
       descripcion: new FormControl('', [Validators.required, Validators.minLength(5)]),
       archivo: new FormControl('', [Validators.required])
