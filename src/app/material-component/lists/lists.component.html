@@ -2,44 +2,65 @@
 <!-- ============================================================== -->
 <!-- As an Accordion -->
 <!-- ============================================================== -->
-<mat-card-title>Producciónes Académicas Registradas </mat-card-title>
-<mat-card >
-
-        <mat-card-header class="example-headers-align" >
-          <mat-panel-title><h3 style="color: #4e0561" >Nombre</h3></mat-panel-title>
-          <mat-panel-title><h3 style="color: #4e0561" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tipo</h3></mat-panel-title>
-          <mat-panel-title></mat-panel-title>
-          <div align= "right"> <a href= 'crear'><button mat-raised-button color="accent" >Nueva Producción</button></a></div>
-        </mat-card-header>
-
-</mat-card>
-<mat-card>
-  <mat-card-content *ngIf="produccion$ | async as produccion; else loading">
-    <mat-accordion class="example-headers-align" *ngFor="let produccion of produccion$ | async">
-      <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(1)" hideToggle="true">
-        <mat-expansion-panel-header>
-          <mat-panel-title> {{produccion.nombreProduccion}}</mat-panel-title>
-          <mat-panel-description> {{produccion.tipo}}
-
-            <img width="30" height="30" mat-list-avatar src="assets/images/libro.jpg">
-
-          </mat-panel-description>
-          <div align= "right"><a  href={{produccion.archivo}} target="_blank" matLine ><mat-icon>cloud_download</mat-icon></a>
-            <a href= 'crear'><mat-icon>edit</mat-icon></a></div>
-        </mat-expansion-panel-header>
-        <mat-panel-description> Descripción. <br> {{produccion.descripcion}}
-        </mat-panel-description>
-
-      </mat-expansion-panel>
-    </mat-accordion>
-  </mat-card-content>
-</mat-card>
+<div
+  fxFlex
+  class="fxClass-all"
+  ngClass.xs="fxClass-xs"
+  [ngClass.lg]="['fxClass-lg', 'fxClass-lg2']">
 
 
+<mat-card fxFlex="100" fxLayoutAlign="center center" >
+<div class="row" fxFlex="70">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <mat-card-title style="color: #304efe">Producciónes Académicas Registradas </mat-card-title>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+            <th >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nombre  </th>
+            <th > &nbsp; Tipo    </th>
+            <th class="text-right">
+              <div align= "right"> <a href= 'crear'><button mat-raised-button color="accent" >Nueva Producción</button></a></div>
+            </th>
+            </thead>
+          </table>
+
+        </div>
+        <mat-card-content *ngIf="produccion$ | async as produccion; else loading">
+          <mat-accordion class="example-headers-align" *ngFor="let produccion of produccion$ | async">
+            <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(2)" hideToggle="true">
+              <mat-expansion-panel-header>
+                <mat-panel-title> {{produccion.nombreProduccion}}</mat-panel-title>
+                <mat-panel-description> {{produccion.tipo}}
+
+                  <img width="30" height="30" mat-list-avatar src="assets/images/libro.jpg">
+
+                </mat-panel-description>
+                <div align= "right"><a  href={{produccion.archivo}} target="_blank" matLine ><mat-icon>cloud_download</mat-icon></a>
+                  <a href= 'crear'><mat-icon>edit</mat-icon></a><a href= 'crear'><mat-icon>delete</mat-icon></a></div>
+              </mat-expansion-panel-header>
+              <mat-panel-description> Descripción. <br> {{produccion.descripcion}}
+              </mat-panel-description>
+
+            </mat-expansion-panel>
+          </mat-accordion>
+        </mat-card-content>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
 
     <ng-template #loading>
       <div class="container-spinner">
-        <mat-spinner diameter='20' strokeWidth='50'></mat-spinner>
+        <mat-spinner diameter='40' strokeWidth='60'></mat-spinner>
       </div>
     </ng-template>
+</mat-card>
 
+</div>

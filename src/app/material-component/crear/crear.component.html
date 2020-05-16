@@ -1,17 +1,10 @@
-<!-- ============================================================== -->
-<!-- row -->
-<!-- ============================================================== -->
-<div fxLayout="row" fxLayoutWrap="wrap">
-		<!-- Card column -->
-		<div fxFlex.gt-sm="100%" fxFlex="100">
-				<mat-card>
-					<mat-card-content>
-						<mat-card-title>Producción Académica</mat-card-title>
-					</mat-card-content>
-			 </mat-card>
-
+<div fxFlex="100" fxLayoutAlign="center center" >
+    <div fxFlex="45">
       <div class="new-crear-container">
-			<mat-card>
+        <mat-card>
+          <mat-card-title style="color: #121e63" align="center">Producción Académica</mat-card-title>
+        </mat-card>
+        <mat-card>
 					<mat-card-content>
             <form [formGroup]="crearForm">
              <div class="form-group">
@@ -61,17 +54,16 @@
               <div>
                 <mat-progress-bar mode="determinate" [value]="num"></mat-progress-bar>
               </div>
-              </div>
+
+             <br> </div>
              <div> <button mat-raised-button color="accent" (click)="onSavedForm()"[disabled]="!crearForm.valid">Crear</button></div>
               </form>
 
 					</mat-card-content>
-			</mat-card>
-    </div>
-      <mat-card>
-        <mat-card-content>
+			  </mat-card>
+       </div>
+              </div>
+            </div>
 
-        </mat-card-content>
-      </mat-card>
-		</div>
-</div>
+
+
