@@ -35,35 +35,23 @@ export class CrearComponent implements OnInit{
   urlFile: Observable<string>;
   ngOnInit(){}
 
-  onResetForm(){
-    this.crearForm.reset();
-  }
+
   onSavedForm()
-  {/* const newProduccion = {
-      nombreProduccion: 'arley',
-      tipo: 'investigacion',
-      descripcion: 'Ole ole lo caracole'} */
-    if(this.crearForm.valid) {
+  {   if(this.crearForm.valid) {
       this.dbData.preAddProduccion(this.crearForm.value, this.archi);
       this.crearForm.reset();
-      //this.locacion.back();
-         }
-    else {
+       }alert("Produccion Guardada");
+     }
 
-    }
-
+handleClick(){
+    this.onSavedForm();
   }
 
   handleArchivo(event:any):void{
     this.archi = event.target.files[0];
-
   }
   get nombreProduccion() { return this.crearForm.get ('nombreProduccion');}
   get tipo() { return this.crearForm.get ('tipo');}
   get descripcion() { return this.crearForm.get ('descripcion');}
-
-
-
-
 
 }

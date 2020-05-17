@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/firestore";
+import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from "@angular/fire/firestore";
 import {Observable} from "rxjs";
 import {finalize, map} from 'rxjs/operators';
 import {MessageI} from "../Models/message.interface";
@@ -15,6 +15,7 @@ export class DataDbService {
   private filePath: any;
   private downloadURL: Observable<string>
   uploadPercent: Observable<number>
+  private produccionaB: AngularFirestoreDocument<MessageI>;
 
   constructor(private afs: AngularFirestore, private storage: AngularFireStorage) {
     this.contactCollection = afs.collection<MessageI>('produccion');
@@ -30,7 +31,6 @@ export class DataDbService {
     };
     //Editar Produccion tambien
     this.contactCollection.add(productObj);
-
   }
 
 
@@ -50,9 +50,15 @@ export class DataDbService {
   public preAddProduccion(produccion:MessageI, file: FileI):void{
     this.uploadFile(produccion, file);
   }
-  deleteBook(idProduccion: string): void {
-    //this.contactCollection = this.afs.collection<MessageI>(` `)
+  deleteProduccion(idProduccion: string): void {
+    this.produccionaB = this.afs.doc<MessageI>(`produccion/${idProduccion}`)
+    this.produccionaB.delete();
   }
+  getProduccion(idProduccion: string) {
+    this.produccionaB = this.afs.doc<MessageI>(`produccion/${idProduccion}`)
+    //no funciona todavia
+  }
+
   private uploadFile(produccion: MessageI, file: FileI ) {
 
     this.filePath = `archivos/${file.name}`;
@@ -70,4 +76,6 @@ export class DataDbService {
         })
       ).subscribe();
   }
+
   }
+

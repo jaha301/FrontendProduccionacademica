@@ -13,6 +13,7 @@ import {AngularFirestore} from "@angular/fire/firestore";
 })
 
 export class ListsComponent implements OnInit{
+  private produ: Observable<MessageI[]>;
   panelOpenState = false;
   step = 0;
   setStep(index: number) {
@@ -28,9 +29,18 @@ export class ListsComponent implements OnInit{
   public produccion: {
     nombreProduccion: String;
     tipo: String;
+    id: string;
     descripcion: string;
     archivo: any;
     fileRef: string;
+
+  }
+
+  borrar(idProduccion: string){
+
+    if(confirm("Está seguro que quiere Eliminar la producción. ")) {
+      this.dbData.deleteProduccion(idProduccion);
+    }
 
   }
 

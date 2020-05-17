@@ -38,7 +38,7 @@
                 <mat-panel-description>  {{produccion.tipo}}</mat-panel-description>
                   <!img width="30" height="30" mat-list-avatar src="assets/images/libro.jpg">
                 <div align= "right"><a  href={{produccion.archivo}} target="_blank" matLine ><mat-icon>cloud_download</mat-icon></a>
-                  <a href= 'crear'><mat-icon>edit</mat-icon></a><a href= 'crear'><mat-icon>delete</mat-icon></a></div>
+                  <a href= 'crear'><mat-icon>edit</mat-icon></a><a (click)="borrar(produccion.id)"><mat-icon>delete</mat-icon></a></div>
               </mat-expansion-panel-header>
               <mat-panel-description> Descripción. <br> {{produccion.descripcion}}
               </mat-panel-description>

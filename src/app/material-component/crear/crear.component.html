@@ -9,7 +9,7 @@
             <form [formGroup]="crearForm">
              <div class="form-group">
                <label>Nombre de la Producción: </label>
-               <input type="text" class="form-control" formControlName="nombreProduccion" placeholder="Nombre de la producción">
+               <input type="text" class="form-control" formControlName="nombreProduccion">
              </div>
               <div class="alert-danger" *ngIf="nombreProduccion.invalid && nombreProduccion.touched">
                 <div class="container-error-message" *ngIf="nombreProduccion.errors.required">
@@ -59,7 +59,9 @@
               </div>
 
              <br> </div>
-             <div> <button mat-raised-button color="accent" (click)="onSavedForm()"[disabled]="!crearForm.valid">Crear</button></div>
+              <div fxLayoutAlign="space-between"> <button mat-raised-button color="accent" (click)="handleClick()"[disabled]="!crearForm.valid">Crear</button>
+                <a  routerLink="/lists" > <button  mat-raised-button color="warn" >Cancelar</button></a></div>
+              <div> </div>
               </form>
 
 					</mat-card-content>
