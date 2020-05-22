@@ -14,14 +14,14 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <mat-card-title style="color: #304efe">Producciónes Académicas Registradas </mat-card-title>
+        <mat-card-title style="color: #304efe"  align="center">Producciónes Académicas Registradas </mat-card-title>
       </div>
       <div class="card-body">
         <div class="table-responsive">
           <table class="table">
             <thead class=" text-primary">
-            <th >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nombre  </th>
-            <th class="text-right">Tipo    </th>
+            <th >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> Nombre </b>  </th>
+            <th class="text-right"><b> Tipo  </b>  </th>
             <th class="text-right">
               <div align= "right"> <a href= 'crear'><button mat-raised-button color="accent" >Nueva Producción</button></a></div>
             </th>
@@ -40,7 +40,7 @@
                 <div align= "right"><a  href={{produccion.archivo}} target="_blank" matLine ><mat-icon>cloud_download</mat-icon></a>
                   <a href= 'crear'><mat-icon>edit</mat-icon></a><a (click)="borrar(produccion.id)"><mat-icon>delete</mat-icon></a></div>
               </mat-expansion-panel-header>
-              <mat-panel-description> Descripción. <br> {{produccion.descripcion}}
+              <mat-panel-description> <b>  Descripcion:  </b> <br> {{produccion.descripcion}}
               </mat-panel-description>
 
             </mat-expansion-panel>
