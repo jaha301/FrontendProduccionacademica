@@ -39,11 +39,15 @@ export class ListsComponent implements OnInit{
   borrar(idProduccion: string){
 
     if(confirm("Está seguro que quiere Eliminar la producción. ")) {
-      this.dbData.deleteProduccion(idProduccion);
+
     }
 
   }
 
+  onPreUpdateProduccion(produccion: MessageI){
+    console.log('PRODUCCION', produccion);
+    //this.dbData.selectedProduccion = Object.assign({}, produccion);
+  }
   public produccion$: Observable<MessageI[]>;
   constructor(private dbData: DataDbService,  ) {
 

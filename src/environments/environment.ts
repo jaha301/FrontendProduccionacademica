@@ -6,13 +6,13 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: "AIzaSyBzEHa5ZX-MZkClu8Y9kN0uMvqtRQEEVEg",
-    authDomain: "database-dbbe4.firebaseapp.com",
-    databaseURL: "https://database-dbbe4.firebaseio.com",
-    projectId: "database-dbbe4",
-    storageBucket: "database-dbbe4.appspot.com",
-    messagingSenderId: "505590619510",
-    appId: "1:505590619510:web:4ca4fafef455987417ee57",
-    measurementId: "G-Y93WD1JQVB"
+    apiKey: "AIzaSyCIU4F22VF7FktXQ46cPa5nP69eYtIODtk",
+    authDomain: "produccion-academica.firebaseapp.com",
+    databaseURL: "https://produccion-academica.firebaseio.com",
+    projectId: "produccion-academica",
+    storageBucket: "produccion-academica.appspot.com",
+    messagingSenderId: "1005762728966",
+    appId: "1:1005762728966:web:466e74642d4e7d7d1f1f87",
+    measurementId: "G-73EGQNPE9G"
   }
 };

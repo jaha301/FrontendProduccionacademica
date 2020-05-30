@@ -50,14 +50,16 @@ export class DataDbService {
   public preAddProduccion(produccion:MessageI, file: FileI):void{
     this.uploadFile(produccion, file);
   }
-  deleteProduccion(idProduccion: string): void {
+  deleteProduccion(idProduccion: MessageI): void {
     this.produccionaB = this.afs.doc<MessageI>(`produccion/${idProduccion}`)
     this.produccionaB.delete();
   }
-  getProduccion(idProduccion: string) {
+  updateProduccion(produccion: MessageI): void {
+    let idProduccion = produccion.id
     this.produccionaB = this.afs.doc<MessageI>(`produccion/${idProduccion}`)
-    //no funciona todavia
+    this.produccionaB.update(produccion);
   }
+
 
   private uploadFile(produccion: MessageI, file: FileI ) {
 
